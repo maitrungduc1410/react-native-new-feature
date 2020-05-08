@@ -34,7 +34,13 @@
 1. [Installation](#Installation)
 2. [Basic usage](#basic-usage)
 3. [List animations](#list-animations)
-4. [Demo](#demo)
+4. [Customization](#Customization)
+    1. [TitleView](#TitleView)
+    2. [ListItem](#ListItem)
+    3. [Detail Button](#Detail-Button)
+    4. [Completion Button](#Completion-Button)
+    4. [Animations](#Animations)
+5. [Demo](#Demo)
 
 # Installation
 With npm:
