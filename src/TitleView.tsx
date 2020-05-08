@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, View, Animated, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
 import { ITextView, IAnimation } from './types'
+import { margin, padding } from './helpers'
 
 const width = Dimensions.get('window').width
 
@@ -54,13 +55,16 @@ const TitleView = (props: IProps) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {
+      ...margin(props.margin),
+      ...padding(props.padding),
+    }]}>
       <Animated.Text
         style={[
-          styles.title,
           {
             fontSize: props.size,
             color: props.color,
+            fontWeight: props.weight,
             opacity: animated,
             transform: [
               isXTransform ? {
@@ -84,25 +88,39 @@ TitleView.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
   size: PropTypes.number,
+  weight: PropTypes.string,
   animation: PropTypes.shape({
     name: PropTypes.string,
     duration: PropTypes.number,
     delay: PropTypes.number,
+  }),
+  margin: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
+  padding: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
   }),
 }
 
 TitleView.defaultProps = {
   color: 'black',
   size: 35,
+  weight: '600',
+  margin: {
+    top: 15,
+  },
+  padding: {},
 }
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 15,
-  },
-  title: {
-    fontWeight: '600',
   },
 })

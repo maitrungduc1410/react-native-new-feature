@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, Animated, TouchableOpacity, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
 import { IButton, IAnimation } from './types'
+import { margin, padding } from './helpers'
 
 const width = Dimensions.get('window').width
 
@@ -56,8 +57,9 @@ const DetailButton = (props: IProps) => {
   return (
     <Animated.View
       style={[
-        styles.container,
         {
+          ...margin(props.margin),
+          ...padding(props.padding),
           opacity: animated,
           transform: [
             isXTransform ? {
@@ -72,7 +74,16 @@ const DetailButton = (props: IProps) => {
       <TouchableOpacity
         onPress={props.handler}
       >
-        <Text style={[styles.title, { fontSize: props.size, color: props.color }]}>{props.text}</Text>
+        <Text style={[
+          styles.title,
+          {
+            fontSize: props.size,
+            color: props.color,
+            fontWeight: props.weight,
+          },
+        ]}>
+          {props.text}
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   )
@@ -84,23 +95,38 @@ DetailButton.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
   size: PropTypes.number,
+  weight: PropTypes.string,
   handler: PropTypes.func,
   animation: PropTypes.shape({
     name: PropTypes.string,
     duration: PropTypes.number,
     delay: PropTypes.number,
   }),
+  margin: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
+  padding: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
 }
 
 DetailButton.defaultProps = {
   color: 'black',
   size: 17,
+  weight: 'normal',
+  magin: {
+    top: 10,
+  },
+  padding: {},
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-  },
   title: {
     textAlign: 'center',
   },

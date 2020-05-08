@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Button, StatusBar, Switch, Text, Linking } from 'react-native';
-import NewFeature from 'react-native-new-feature';
+import NewFeature from './lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const COLOR_BLUE = 'rgb(21, 124, 247)'
@@ -34,24 +34,48 @@ const Home = (props) => {
     title: {
       text: 'What\'s New',
       color: textColor,
-      size: 35
+      size: 35,
+      weight: '600',
+      margin: {
+        top: 15,
+      },
+      padding: {
+        top: 10,
+      }
     },
     items: [
       {
         title: {
           text: 'Easy setup',
           color: textColor,
-          size: 18
+          size: 18,
+          margin: {
+            top: 15,
+          },
+          padding: {
+            top: 10,
+          }
         },
         subtitle: {
           text: 'The simple and typesafe WhatsNew struct enables you to structurize your awesome new app features',
           color: textColor,
-          size: 15
+          size: 15,
+          margin: {
+            top: 5,
+          },
+          padding: {
+            top: 5,
+          }
         },
         image: {
-          component: <Icon name="rocket" size={30} color={tintColor} />,
-          // component: <Image source={require('./assets/icons8-approval-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor: COLOR }}/>,
-          size: IMAGE_SIZE
+          // component: <Icon name="rocket" size={30} color={tintColor} />,
+          component: <Image source={require('./assets/icons8-approval-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
+          margin: {
+            right: 15,
+          },
+          padding: {
+            top: 5,
+          }
         }
       },
       {
@@ -70,7 +94,6 @@ const Home = (props) => {
                       source={require('./assets/icons8-picture-100.png')}
                       style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}
                     />,
-          size: IMAGE_SIZE
         }
       },
       {
@@ -86,7 +109,6 @@ const Home = (props) => {
         },
         image: {
           component: <Image source={require('./assets/icons8-puzzle-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
-          size: IMAGE_SIZE
         }
       },
       {
@@ -98,24 +120,34 @@ const Home = (props) => {
         subtitle: {
           text: 'Contributions are very welcome 👨‍💻',
           color: textColor,
-          size: 15
+          size: 15,
         },
         image: {
           component: <Image source={require('./assets/icons8-github-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
-          size: IMAGE_SIZE
         }
       }
     ],
     detailButton: {
       text: 'Read more',
       color: tintColor,
-      size: 17
+      size: 17,
+      weight: 'normal',
+      margin: {
+        top: 15,
+      },
+      padding: {
+        top: 10,
+      }
     },
     completionButton: {
       text: 'Continue',
       color: 'white',
       background: tintColor,
-      size: 17
+      size: 17,
+      weight: '600',
+      margin: {
+        top: 15,
+      },
     }
   }
 

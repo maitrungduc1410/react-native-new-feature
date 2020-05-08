@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, Animated, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
 import { IAnimation, ICompletionButtonView } from './types'
+import { margin, padding } from './helpers'
 
 const width = Dimensions.get('window').width
 
@@ -56,8 +57,9 @@ const CompletionButton = (props: IProps) => {
   return (
     <Animated.View
       style={[
-        styles.container,
         {
+          ...margin(props.margin),
+          ...padding(props.padding),
           opacity: animated,
           transform: [
             isXTransform ? {
@@ -73,7 +75,16 @@ const CompletionButton = (props: IProps) => {
         style={[styles.button, { backgroundColor: props.background, borderRadius: props.radius }]}
         onPress={props.handler}
       >
-        <Text style={[styles.title, { fontSize: props.size, color: props.color }]}>{props.text}</Text>
+        <Text style={[
+          styles.title,
+          {
+            fontSize: props.size,
+            color: props.color,
+            fontWeight: props.weight,
+          },
+        ]}>
+          {props.text}
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   )
@@ -87,11 +98,24 @@ CompletionButton.propTypes = {
   size: PropTypes.number,
   background: PropTypes.string,
   radius: PropTypes.number,
+  weight: PropTypes.string,
   handler: PropTypes.func,
   animation: PropTypes.shape({
     name: PropTypes.string,
     duration: PropTypes.number,
     delay: PropTypes.number,
+  }),
+  margin: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
+  padding: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
   }),
 }
 
@@ -100,20 +124,22 @@ CompletionButton.defaultProps = {
   radius: 14,
   size: 17,
   background: 'black',
+  weight: '600',
+  margin: {
+    top: 10,
+    bottom: 20,
+  },
+  padding: {
+    left: 20,
+    right: 20,
+  },
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-    marginBottom: 20,
-    paddingHorizontal: 20,
-  },
   button: {
-    borderRadius: 14,
     paddingVertical: 15,
   },
   title: {
     textAlign: 'center',
-    fontWeight: '600',
   },
 })

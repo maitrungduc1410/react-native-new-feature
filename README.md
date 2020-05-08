@@ -39,7 +39,8 @@
     2. [ListItem](#ListItem)
     3. [Detail Button](#Detail-Button)
     4. [Completion Button](#Completion-Button)
-    4. [Animations](#Animations)
+    5. [Margin and padding](#margin-and-padding)
+    6. [Animations](#Animations)
 5. [Orientation change support](#Orientation-change-support)
 6. [Demo](#Demo)
 
@@ -104,9 +105,10 @@ const App = (props) => {
 ## TitleView
 ```ts
 Properties:
-- text: string (required),
-- color: string,
+- text: string (required)
+- color: string
 - size: number
+- weight: '600' // same as fontWeight property. default is '600'
 ```
 
 Usage:
@@ -131,32 +133,26 @@ This component uses `ScrollView` to render list of new features, each row is a `
 To customize these components,read the sections below.
 
 ### Item Image
-```ts
+```js
 Properties:
 - component: <React component> (required),
-- size: number // default is 45 if don't specify
-```
-Note: `size` is the size of wrapper view of the `<React component>`, usually it'll be same as the `<React component>` size. Example:
-```js
-image: {
-  component: <Image source={require('myimage.png')} style={{ width: 45, height: 45, 'red' }}/>,
-  size: 45
-}
 ```
 ### Item Title and Item Subtitle
 ```ts
 Properties:
-- text: string (required),
-- color: string, // default is 'black' if don't specify
+- text: string (required)
+- color: string // default is 'black' if don't specify
 - size: number // default is 17 if don't specify
+- weight: 'bold' // same as fontWeight property
 ```
 
 ## Detail Button
 ```ts
 Properties:
-- text: string (required),
-- color: string,
+- text: string (required)
+- color: string
 - size: number
+- weight: 'bold' // same as fontWeight property
 - handler: function
 ```
 
@@ -185,6 +181,7 @@ Properties:
 - size: number
 - background: string,
 - radius: number,
+- weight: 'bold' // same as fontWeight property
 - handler: function
 ```
 
@@ -207,6 +204,36 @@ const myHandler = () => {
 />
 ```
 
+## Margin and Padding
+`margin` and `layout` props are provided in order to help you have more control on layout. These props are applied to these components:
+- `TitleView`
+- `ItemImage`
+- `ItemTitle`
+- `ItemSubtitle`
+- `DetailButton`
+- `CompletionButton`
+
+Usage:
+```js
+<NewFeature
+  title={{
+    margin: {
+      top: 1,
+      right: 2,
+      bottom: 3,
+      left: 4
+    },
+    padding: {
+      top: 5,
+      right: 6,
+      bottom: 7,
+      left: 8
+    }
+  }}
+  {...other props}
+/>
+```
+
 ## Animations
 This package have 2 types of animations:
 - Animation on root component appear
@@ -216,19 +243,30 @@ Root component makes use of `Modal` component which is built-in of React Native
 Usage:
 ```js
 <NewFeature
-  appearAnimation={'fade'} // can be 'none' | 'fade' | 'slide'. 'none' is default if don't specify
+  appearAnimation={'fade'}
 />
-
 ```
+
+`appearAnimation` is one of:
+- `none` (default if not specified)
+- `fade`
+- `slide`
 ### ListItem animation
 Usage:
 ```js
 <NewFeature
   animation={'slide-down'}
-  // can be 'none' | 'fade' | 'slide-up' | 'slide-down' | 'slide-right' | 'slide-left'
-  // 'none' is default if don't specify
 />
 ```
+
+`animation` is one of:
+- `none` (default if not specified)
+- `fade`
+- `slide-up`
+- `slide-down`
+- `slide-right`
+- `slide-left`
+
 # Orientation change support
 By using purely React Native View flex layout, this component is auto-compatible when device orientation changed
 

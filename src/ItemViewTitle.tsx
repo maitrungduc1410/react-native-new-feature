@@ -1,7 +1,8 @@
 import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { ITextView } from './types'
+import { margin, padding } from './helpers'
 
 interface IProps extends ITextView {
   contentAlignment: 'left' | 'center'
@@ -10,14 +11,15 @@ interface IProps extends ITextView {
 const ItemViewTitle = (props: IProps) => {
   return (
     <Text style={[
-      styles.container,
-        {
-          fontSize: props.size,
-          color: props.color,
-          textAlign: props.contentAlignment === 'center' ? 'center' : 'left',
-        },
-      ]}
-    >
+      {
+        ...margin(props.margin),
+        ...padding(props.padding),
+        fontSize: props.size,
+        color: props.color,
+        fontWeight: props.weight,
+        textAlign: props.contentAlignment === 'center' ? 'center' : 'left',
+      },
+    ]}>
       {props.text}
     </Text>
   )
@@ -29,17 +31,27 @@ ItemViewTitle.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
   size: PropTypes.number,
+  weight: PropTypes.string,
   contentAlignment: PropTypes.oneOf(['left', 'center']),
+  margin: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
+  padding: PropTypes.shape({
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+    left: PropTypes.number,
+  }),
 }
 
 ItemViewTitle.defaultProps = {
   contentAlignment: 'left',
   color: 'black',
   size: 17,
+  weight: '600',
+  margin: {},
+  padding: {},
 }
-
-const styles = StyleSheet.create({
-  container: {
-    fontWeight: '600',
-  },
-})

@@ -1,7 +1,17 @@
+export interface IOffsetable {
+  top?: number,
+  right?: number,
+  bottom?: number,
+  left?: number,
+}
+
 export interface ITextView {
   text: string,
   color: string,
-  size: number
+  size: number,
+  weight: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900',
+  margin: IOffsetable,
+  padding: IOffsetable,
 }
 
 export interface IButton extends ITextView {
@@ -15,7 +25,8 @@ export interface ICompletionButtonView extends IButton {
 
 export interface IItemViewImage {
   component: JSX.Element,
-  size?: number
+  margin: IOffsetable,
+  padding: IOffsetable
 }
 
 export interface IItemView {

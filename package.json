@@ -2,7 +2,7 @@
   "name": "react-native-new-feature",
   "title": "React Native New Feature",
   "description": "Simple and lightweight component that shows your app new features",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

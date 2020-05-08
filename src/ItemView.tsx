@@ -75,20 +75,15 @@ const ItemView = (props: IProps) => {
       ]}
     >
       <ItemViewImage
-        component={props.image.component}
-        size={props.image.size}
+        {...props.image}
       />
       <View style={styles.textContainer}>
         <ItemViewTitle
-          text={props.title.text}
-          size={props.title.size}
-          color={props.title.color}
+          { ...props.title }
           contentAlignment={props.contentAlignment}
         />
         <ItemViewSubtitle
-          text={props.subtitle.text}
-          size={props.subtitle.size}
-          color={props.subtitle.color}
+        { ...props.subtitle }
           contentAlignment={props.contentAlignment}
         />
       </View>
@@ -103,11 +98,13 @@ ItemView.propTypes = {
     text: PropTypes.string.isRequired,
     color: PropTypes.string,
     size: PropTypes.number,
+    weight: PropTypes.string,
   }),
   subtitle: PropTypes.shape({
     text: PropTypes.string.isRequired,
     color: PropTypes.string,
     size: PropTypes.number,
+    weight: PropTypes.string,
   }),
   image: PropTypes.shape({
     component: PropTypes.node.isRequired,
