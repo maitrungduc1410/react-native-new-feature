@@ -228,6 +228,8 @@ Usage:
   // 'none' is default if don't specify
 />
 ```
+# Orientation change support
+By using purely React Native View flex layout, this component is auto-compatible when device orientation changed
 
 # Demo
 A complete working demo is located at [example folder](./example/Home.js)
