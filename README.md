@@ -205,7 +205,7 @@ const myHandler = () => {
 ```
 
 ## Margin and Padding
-`margin` and `layout` props are provided in order to help you have more control on layout. These props are applied to these components:
+`margin` and `padding` props are provided in order to help you have more control on layout. These props are applied to these components:
 - `TitleView`
 - `ItemImage`
 - `ItemTitle`
