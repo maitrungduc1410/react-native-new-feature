@@ -43,6 +43,7 @@
     6. [Animations](#Animations)
 5. [Orientation change support](#Orientation-change-support)
 6. [Demo](#Demo)
+7. [Contributing](#Contributing)
 
 # Installation
 With npm:
