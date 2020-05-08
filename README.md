@@ -133,14 +133,21 @@ To customize these components,read the sections below.
 ```ts
 Properties:
 - component: <React component> (required),
-- size: number
+- size: number // default is 45 if don't specify
+```
+Note: `size` is the size of wrapper view of the `<React component>`, usually it'll be same as the `<React component>` size. Example:
+```js
+image: {
+  component: <Image source={require('myimage.png')} style={{ width: 45, height: 45, 'red' }}/>,
+  size: 45
+}
 ```
 ### Item Title and Item Subtitle
 ```ts
 Properties:
 - text: string (required),
-- color: string,
-- size: number
+- color: string, // default is 'black' if don't specify
+- size: number // default is 17 if don't specify
 ```
 
 ## Detail Button
