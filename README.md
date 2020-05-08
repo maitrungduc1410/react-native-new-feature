@@ -88,7 +88,7 @@ const App = (props) => {
 }
 ```
 # Customization
-`React Native New Feature` can be fully customized as your need. Below is detail sub components included:
+`React Native New Feature` can be fully customized as your need. Below is detail of sub components included and list of animations available:
 
 <div align="center">
   <img src="./overview.png" />
@@ -190,6 +190,29 @@ const myHandler = () => {
     handler: myHandler
   }}
   {...other props}
+/>
+```
+
+## Animations
+This package have 2 types of animations:
+- Animation on root component appear
+- Animation of the ListItem
+### Root component animation
+Root component makes use of `Modal` component which is built-in of React Native
+Usage:
+```js
+<NewFeature
+  appearAnimation={'fade'} // can be 'none' | 'fade' | 'slide'. 'none' is default if don't specify
+/>
+
+```
+### ListItem animation
+Usage:
+```js
+<NewFeature
+  animation={'slide-down'}
+  // can be 'none' | 'fade' | 'slide-up' | 'slide-down' | 'slide-right' | 'slide-left'
+  // 'none' is default if don't specify
 />
 ```
 

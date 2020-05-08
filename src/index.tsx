@@ -14,7 +14,6 @@ interface IProps {
   background?: string,
   animation: 'none' | 'fade' | 'slide-up' | 'slide-down' | 'slide-right'| 'slide-left',
   appearAnimation: 'none' | 'fade' | 'slide',
-  appearAnimationDuration: number,
   title: ITextView,
   detailButton?: IButton,
   completionButton: ICompletionButtonView,
@@ -39,7 +38,7 @@ const WhatsNew = (props: IProps) => {
           animation={{
             name: props.animation,
             duration: constants.FADE_DURATION,
-            delay: props.appearAnimationDuration + constants.TITLE_VIEW_ANIMATION_DURATION,
+            delay: constants.APPEAR_DURATION + constants.TITLE_VIEW_ANIMATION_DURATION,
           }}
           {...props.title}
         />
@@ -47,7 +46,7 @@ const WhatsNew = (props: IProps) => {
           animation={{
             name: props.animation,
             duration: constants.FADE_DURATION,
-            delay: props.appearAnimationDuration + constants.TITLE_VIEW_ANIMATION_DURATION,
+            delay: constants.APPEAR_DURATION + constants.TITLE_VIEW_ANIMATION_DURATION,
           }}
           items={props.items}
           contentAlignment={props.contentAlignment}
@@ -59,7 +58,7 @@ const WhatsNew = (props: IProps) => {
               animation={{
                 name: props.animation,
                 duration: constants.FADE_DURATION,
-                delay: props.appearAnimationDuration + constants.TITLE_VIEW_ANIMATION_DURATION * 2 + props.items.length * constants.ITEM_VIEW_ANIMATION_DELAY,
+                delay: constants.APPEAR_DURATION + constants.TITLE_VIEW_ANIMATION_DURATION * 2 + props.items.length * constants.ITEM_VIEW_ANIMATION_DELAY,
               }}
               {...props.detailButton}
             />
@@ -70,7 +69,7 @@ const WhatsNew = (props: IProps) => {
           animation={{
             name: props.animation,
             duration: constants.FADE_DURATION,
-            delay: props.appearAnimationDuration + constants.TITLE_VIEW_ANIMATION_DURATION * 3 + props.items.length * constants.ITEM_VIEW_ANIMATION_DELAY,
+            delay: constants.APPEAR_DURATION + constants.TITLE_VIEW_ANIMATION_DURATION * 3 + props.items.length * constants.ITEM_VIEW_ANIMATION_DELAY,
           }}
           {...props.completionButton}
         />
@@ -87,7 +86,6 @@ WhatsNew.propTypes = {
   background: PropTypes.string,
   animation: PropTypes.oneOf(['none', 'fade', 'slide-up', 'slide-down', 'slide-right', 'slide-left']),
   appearAnimation: PropTypes.oneOf(['none', 'fade', 'slide']),
-  appearAnimationDuration: PropTypes.number,
   title: PropTypes.shape({
     text: PropTypes.string.isRequired,
     color: PropTypes.string,
@@ -114,7 +112,6 @@ WhatsNew.defaultProps = {
   background: 'white',
   animation: 'none',
   appearAnimation: 'none',
-  appearAnimationDuration: 500,
 }
 
 const styles = StyleSheet.create({

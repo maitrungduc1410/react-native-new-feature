@@ -1,8 +1,8 @@
 {
   "name": "react-native-new-feature",
-  "title": "React Native Whats New Kit",
+  "title": "React Native New Feature",
+  "description": "Simple and lightweight component that shows your app new features",
   "version": "1.0.0",
-  "description": "TODO",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -11,15 +11,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-whats-new-kit.git",
-    "baseUrl": "https://github.com/github_account/react-native-whats-new-kit"
+    "url": "git+https://github.com/github_account/react-native-new-feature.git",
+    "baseUrl": "https://github.com/github_account/react-native-new-feature"
   },
+  "bugs": {
+    "url": "https://github.com/maitrungduc1410/react-native-new-feature/issues"
+  },
+  "homepage": "https://github.com/maitrungduc1410/react-native-new-feature",
   "keywords": [
-    "react-native"
+    "react-native",
+    "react-native-whats-new",
+    "react-native-new-feature",
+    "react native new feature",
+    "react native whats new"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Mai Trung Duc",
+    "email": "maitrungduc1410@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",

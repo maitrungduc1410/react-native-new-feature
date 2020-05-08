@@ -30,7 +30,6 @@ const Home = (props) => {
   const textColor = isDark ? COLOR_WHITE : COLOR_BLACK
 
   const data = {
-    appearAnimationDuration: 500,
     background,
     title: {
       text: 'What\'s New',
@@ -197,7 +196,6 @@ const Home = (props) => {
       <NewFeature
         visible={visible}
         appearAnimation={appearAnimation}
-        appearAnimationDuration={data.appearAnimationDuration}
         contentAlignment={align}
         animation={animation}
         background={data.background}
