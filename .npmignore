@@ -1,0 +1,8 @@
+node_modules
+example
+src
+.git*
+tsconfig.*
+tslint.json
+*.gif
+*.png

@@ -1,0 +1,38 @@
+{
+  "name": "react-native-new-feature",
+  "title": "React Native Whats New Kit",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc --p tsconfig.prod.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-whats-new-kit.git",
+    "baseUrl": "https://github.com/github_account/react-native-whats-new-kit"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "yourname@email.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-native": "^0.62.2",
+    "react": "^16.9.0",
+    "react-native": "^0.61.5",
+    "typescript": "^3.8.3"
+  }
+}
