@@ -1,8 +1,11 @@
 <h1 align="center">
-  <div>
-    React Native New Feature
-  </div>
-  <div>
+  React Native New Feature
+</h1>
+<p align="center">
+  ☀️Simple and lightweight What's New style component that shows your React Native app new features☀️
+</p>
+
+<div align="center">
   <a href="https://www.npmjs.com/package/react-native-new-feature" target="_blank">
     <img src="https://img.shields.io/npm/dw/react-native-new-feature" />
   </a>
@@ -18,17 +21,14 @@
   <a href="https://github.com/maitrungduc1410/react-native-new-feature" target="_blank">
     <img src="https://img.shields.io/github/stars/maitrungduc1410/react-native-new-feature?style=social" />
   </a>
-  
   </div>
-  <br>
-  <div align="center">
-    <img src="./demo_android.gif" style="margin-right: 30px;" />
-    <img src="./demo_ios.gif" />
-  </div>
-  <h2 align="center">
-    If you like this project, encourage me by giving a ⭐️. Happy hacking
-  </h2>
-</h1>
+<div align="center">
+  <img src="./demo_android.gif" style="margin-right: 30px;" />
+  <img src="./demo_ios.gif" />
+</div>
+<h2 align="center">
+  If you like this project, encourage me by giving a ⭐️. Happy hacking
+</h2>
 
 # Table of Contents
 1. [Installation](#Installation)
