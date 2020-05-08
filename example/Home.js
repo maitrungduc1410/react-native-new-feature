@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Button, StatusBar, Switch, Text, Linking } from 'react-native';
-import NewFeature from './lib';
+import NewFeature from 'react-native-new-feature';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const COLOR_BLUE = 'rgb(21, 124, 247)'

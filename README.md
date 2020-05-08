@@ -135,7 +135,7 @@ To customize these components,read the sections below.
 ### Item Image
 ```js
 Properties:
-- component: <React component> (required),
+- component(required): React component, usually is a <Image> or <Icon> ...,
 ```
 ### Item Title and Item Subtitle
 ```ts
@@ -272,3 +272,13 @@ By using purely React Native View flex layout, this component is auto-compatible
 
 # Demo
 A complete working demo is located at [example folder](./example/Home.js)
+
+# Contributing
+To start developing with this project, simply run the following commands:
+```
+npm install # or yarn install (to install dependencies)
+
+npm run watch # or yarn watch (to build this project in watch mode for development)
+
+npm run build # or yarn build (to build project in production mode)
+```
