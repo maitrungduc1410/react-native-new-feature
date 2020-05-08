@@ -40,7 +40,8 @@
     3. [Detail Button](#Detail-Button)
     4. [Completion Button](#Completion-Button)
     4. [Animations](#Animations)
-5. [Demo](#Demo)
+5. [Orientation change support](#Orientation-change-support)
+6. [Demo](#Demo)
 
 # Installation
 With npm:
