@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/npm/v/react-native-new-feature" />
   </a>
 
-  <a href="https://github.com/maitrungduc1410/react-native-new-feature" target="_blank">
+  <a href="https://github.com/maitrungduc1410/react-native-new-feature/blob/master/LICENSE" target="_blank">
     <img src="https://img.shields.io/github/license/maitrungduc1410/react-native-new-feature" />
   </a>
 
