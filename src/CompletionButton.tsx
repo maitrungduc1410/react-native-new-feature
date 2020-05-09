@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, Animated, Dimensions } from 'react-
 import PropTypes from 'prop-types'
 import { IAnimation, ICompletionButtonView } from './types'
 import { margin, padding } from './helpers'
+import { textPropTypes, layoutPropTypes, animationPropTypes } from './propTypes'
 
 const width = Dimensions.get('window').width
 
@@ -93,30 +94,12 @@ const CompletionButton = (props: IProps) => {
 export default CompletionButton
 
 CompletionButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  size: PropTypes.number,
+  ...textPropTypes,
+  ...layoutPropTypes,
+  ...animationPropTypes,
   background: PropTypes.string,
   radius: PropTypes.number,
-  weight: PropTypes.string,
   handler: PropTypes.func,
-  animation: PropTypes.shape({
-    name: PropTypes.string,
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  margin: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
-  padding: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
 }
 
 CompletionButton.defaultProps = {

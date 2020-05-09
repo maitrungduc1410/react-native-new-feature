@@ -1,18 +1,23 @@
-export interface IOffsetable {
+export type TLayoutItem = {
   top?: number,
   right?: number,
   bottom?: number,
   left?: number,
 }
 
-export interface ITextView {
-  text: string,
-  color: string,
-  size: number,
-  weight: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900',
-  margin: IOffsetable,
-  padding: IOffsetable,
+export type TLayoutProps = {
+  margin?: TLayoutItem,
+  padding?: TLayoutItem,
 }
+
+export type TTextProps = {
+  text: string,
+  color?: string,
+  size?: number,
+  weight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900',
+}
+
+export interface ITextView extends TTextProps, TLayoutProps {}
 
 export interface IButton extends ITextView {
   handler?: () => void
@@ -23,10 +28,8 @@ export interface ICompletionButtonView extends IButton {
   radius?: number
 }
 
-export interface IItemViewImage {
+export interface IItemViewImage extends TLayoutProps {
   component: JSX.Element,
-  margin: IOffsetable,
-  padding: IOffsetable
 }
 
 export interface IItemView {
@@ -40,3 +43,7 @@ export interface IAnimation {
   delay: number,
   duration: number
 }
+
+export type TListAnimation = 'none' | 'fade' | 'slide-up' | 'slide-down' | 'slide-right'| 'slide-left'
+export type TAppearAnimation = 'none' | 'fade' | 'slide'
+export type TFontWeight = 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'

@@ -5,6 +5,7 @@ import ItemViewTitle from './ItemViewTitle'
 import ItemViewSubtitle from './ItemViewSubtitle'
 import ItemViewImage from './ItemViewImage'
 import { IItemView, IAnimation } from './types'
+import { animationPropTypes, itemViewPropTypes } from './propTypes'
 
 const width = Dimensions.get('window').width
 
@@ -74,18 +75,24 @@ const ItemView = (props: IProps) => {
         },
       ]}
     >
-      <ItemViewImage
-        {...props.image}
-      />
+      {
+        props.image && <ItemViewImage
+          {...props.image}
+        />
+      }
       <View style={styles.textContainer}>
-        <ItemViewTitle
-          { ...props.title }
-          contentAlignment={props.contentAlignment}
-        />
-        <ItemViewSubtitle
-        { ...props.subtitle }
-          contentAlignment={props.contentAlignment}
-        />
+        {
+          props.title && <ItemViewTitle
+            {...props.title}
+            contentAlignment={props.contentAlignment}
+          />
+        }
+        {
+          props.subtitle && <ItemViewSubtitle
+            {...props.subtitle}
+            contentAlignment={props.contentAlignment}
+          />
+        }
       </View>
     </Animated.View>
   )
@@ -94,27 +101,8 @@ const ItemView = (props: IProps) => {
 export default ItemView
 
 ItemView.propTypes = {
-  title: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    size: PropTypes.number,
-    weight: PropTypes.string,
-  }),
-  subtitle: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    size: PropTypes.number,
-    weight: PropTypes.string,
-  }),
-  image: PropTypes.shape({
-    component: PropTypes.node.isRequired,
-    size: PropTypes.number,
-  }),
-  animation: PropTypes.shape({
-    name: PropTypes.string,
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
+  ...animationPropTypes,
+  ...itemViewPropTypes,
   contentAlignment: PropTypes.oneOf(['left', 'center']),
 }
 

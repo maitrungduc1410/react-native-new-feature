@@ -3,6 +3,7 @@ import { StyleSheet, Text, Animated, TouchableOpacity, Dimensions } from 'react-
 import PropTypes from 'prop-types'
 import { IButton, IAnimation } from './types'
 import { margin, padding } from './helpers'
+import { textPropTypes, layoutPropTypes, animationPropTypes } from './propTypes'
 
 const width = Dimensions.get('window').width
 
@@ -92,28 +93,10 @@ const DetailButton = (props: IProps) => {
 export default DetailButton
 
 DetailButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  weight: PropTypes.string,
+  ...textPropTypes,
+  ...layoutPropTypes,
+  ...animationPropTypes,
   handler: PropTypes.func,
-  animation: PropTypes.shape({
-    name: PropTypes.string,
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  margin: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
-  padding: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
 }
 
 DetailButton.defaultProps = {

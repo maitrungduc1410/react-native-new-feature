@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { IItemViewImage } from './types'
 import { margin, padding } from './helpers'
+import { layoutPropTypes } from './propTypes'
 
 const ItemViewImage = (props: IItemViewImage) => {
   return (
@@ -22,23 +23,10 @@ export default ItemViewImage
 
 ItemViewImage.propTypes = {
   component: PropTypes.node.isRequired,
-  size: PropTypes.number,
-  margin: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
-  padding: PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number,
-  }),
+  ...layoutPropTypes,
 }
 
 ItemViewImage.defaultProps = {
-  size: 45,
   margin: {
     right: 15,
   },

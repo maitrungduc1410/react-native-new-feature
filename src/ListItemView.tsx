@@ -4,6 +4,7 @@ import ItemView from './ItemView'
 import constants from './constants'
 import PropTypes from 'prop-types'
 import { IItemView, IAnimation } from './types'
+import { animationPropTypes, itemViewPropTypes } from './propTypes'
 
 interface IProps {
   animation: IAnimation,
@@ -34,12 +35,10 @@ const ListItemView = (props: IProps) => {
 export default ListItemView
 
 ListItemView.propTypes = {
-  items: PropTypes.array.isRequired,
-  animation: PropTypes.shape({
-    name: PropTypes.string,
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
+  items: PropTypes.arrayOf(PropTypes.shape({
+    ...itemViewPropTypes,
+  })).isRequired,
+  ...animationPropTypes,
   contentAlignment: PropTypes.oneOf(['left', 'center']),
 }
 

@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Button, StatusBar, Linking } from 'react-native'
-import WhatsNewKit from './lib'
+import { StyleSheet, View, Image, Button, StatusBar, Switch, Text, Linking } from 'react-native'
+import NewFeature from 'react-native-new-feature'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const COLOR_BLUE = 'rgb(21, 124, 247)'
 const COLOR_LITE_BLUE = 'rgb(100, 201, 246)'
 const COLOR_ORANGE = 'rgb(235, 119, 33)'
 const COLOR_PURPLE = 'rgb(182, 53, 251)'
+const TINT_COLORS = [COLOR_BLUE, COLOR_LITE_BLUE, COLOR_ORANGE, COLOR_PURPLE]
+
 const COLOR_WHITE = 'white'
 const COLOR_BLACK = 'black'
 
@@ -14,107 +16,141 @@ const IMAGE_SIZE = 45
 const BACKGROUND_WHITE = 'white'
 const BACKGROUND_DARK = 'rgb(20, 29, 38)'
 
-const isDark = true
-const tintColor = COLOR_PURPLE
-const background = isDark ? BACKGROUND_DARK : BACKGROUND_WHITE
-const textColor = isDark ? COLOR_WHITE : COLOR_BLACK
+let currentColorIndex = 0
 
-const data = {
-  appearAnimationDuration: 500,
-  background,
-  contentAlignment: 'center',
-  title: {
-    text: 'What\'s New',
-    color: textColor,
-    size: 35,
-  },
-  items: [
-    {
-      title: {
-        text: 'Easy setup',
-        color: textColor,
-        size: 18,
-      },
-      subtitle: {
-        text: 'The simple and typesafe WhatsNew struct enables you to structurize your awesome new app features',
-        color: textColor,
-        size: 15,
-      },
-      image: {
-        component: <Icon name='rocket' size={30} color={tintColor} />,
-        // component: <Image source={require('./assets/icons8-approval-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor: COLOR }}/>,
-        size: IMAGE_SIZE,
-      },
-    },
-    {
-      title: {
-        text: 'Themes',
-        color: textColor,
-        size: 18,
-      },
-      subtitle: {
-        text: 'You can apply different themes to perfectly match with your existing app design',
-        color: textColor,
-        size: 15,
-      },
-      image: {
-        component: <Image
-                    source={require('./assets/icons8-picture-100.png')}
-                    style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}
-                  />,
-        size: IMAGE_SIZE,
-      },
-    },
-    {
-      title: {
-        text: 'Installation',
-        color: textColor,
-        size: 18,
-      },
-      subtitle: {
-        text: 'You can install WhatsNewKit via CocoaPods and Carthage',
-        color: textColor,
-        size: 15,
-      },
-      image: {
-        component: <Image source={require('./assets/icons8-puzzle-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
-        size: IMAGE_SIZE,
-      },
-    },
-    {
-      title: {
-        text: 'Open Source',
-        color: textColor,
-        size: 18,
-      },
-      subtitle: {
-        text: 'Contributions are very welcome 👨‍💻',
-        color: textColor,
-        size: 15,
-      },
-      image: {
-        component: <Image source={require('./assets/icons8-github-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
-        size: IMAGE_SIZE,
-      },
-    },
-  ],
-  detailButton: {
-    text: 'Read more',
-    color: tintColor,
-    size: 17,
-  },
-  completionButton: {
-    text: 'Continue',
-    color: 'white',
-    background: tintColor,
-    size: 17,
-  },
-}
-
-const App = (props) => {
+const Home = (props) => {
+  const [isDark, setIsDark] = useState(false)
+  const [tintColor, setTintColor] = useState(COLOR_BLUE)
   const [visible, setVisible] = useState(false)
-  const [animation, setAnimation] = useState<'none' | 'fade' | 'slide-up' | 'slide-down' | 'slide-right' | 'slide-left'>('fade')
-  const [appearAnimation, setAppearAnimation] = useState<'none' | 'fade' | 'slide'>('fade')
+  const [animation, setAnimation] = useState('fade')
+  const [appearAnimation, setAppearAnimation] = useState('fade')
+  const [align, setAlign] = useState('left')
+
+  const background = isDark ? BACKGROUND_DARK : BACKGROUND_WHITE
+  const textColor = isDark ? COLOR_WHITE : COLOR_BLACK
+
+  const data = {
+    background,
+    title: {
+      text: 'What\'s New',
+      color: textColor,
+      size: 35,
+      weight: '600',
+      margin: {
+        top: 15,
+      },
+      padding: {
+        top: 10,
+      },
+    },
+    items: [
+      {
+        title: {
+          text: 'Easy setup',
+          color: textColor,
+          size: 18,
+          margin: {
+            top: 15,
+          },
+          padding: {
+            top: 10,
+          },
+        },
+        subtitle: {
+          text: 'The simple and typesafe WhatsNew struct enables you to structurize your awesome new app features',
+          color: textColor,
+          size: 15,
+          margin: {
+            top: 5,
+          },
+          padding: {
+            top: 5,
+          },
+        },
+        image: {
+          // component: <Icon name="rocket" size={30} color={tintColor} />,
+          component: <Image source={require('./assets/icons8-approval-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
+          margin: {
+            right: 15,
+          },
+          padding: {
+            top: 5,
+          },
+        },
+      },
+      {
+        title: {
+          text: 'Themes',
+          color: textColor,
+          size: 18,
+        },
+        subtitle: {
+          text: 'You can apply different themes to perfectly match with your existing app design',
+          color: textColor,
+          size: 15,
+        },
+        image: {
+          component: <Image
+                      source={require('./assets/icons8-picture-100.png')}
+                      style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}
+                    />,
+        },
+      },
+      {
+        title: {
+          text: 'Installation',
+          color: textColor,
+          size: 18,
+        },
+        subtitle: {
+          text: 'You can install WhatsNewKit via CocoaPods and Carthage',
+          color: textColor,
+          size: 15,
+        },
+        image: {
+          component: <Image source={require('./assets/icons8-puzzle-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
+        },
+      },
+      {
+        title: {
+          text: 'Open Source',
+          color: textColor,
+          size: 18,
+        },
+        subtitle: {
+          text: 'Contributions are very welcome 👨‍💻',
+          color: textColor,
+          size: 15,
+        },
+        image: {
+          component: <Image source={require('./assets/icons8-github-100.png')} style={{ width: IMAGE_SIZE, height: IMAGE_SIZE, tintColor }}/>,
+        },
+      },
+    ],
+    detailButton: {
+      text: 'Read more',
+      color: tintColor,
+      size: 17,
+      weight: 'normal',
+      margin: {
+        top: 15,
+      },
+      padding: {
+        top: 10,
+      },
+    },
+    completionButton: {
+      text: 'Continue',
+      color: 'white',
+      background: tintColor,
+      size: 17,
+      weight: '600',
+      margin: {
+        top: 15,
+      },
+    },
+  }
+
   const onDetailButtonPress = () => {
     Linking.openURL('https://google.com')
   }
@@ -124,18 +160,39 @@ const App = (props) => {
   }
 
   const show = (anim) => {
+    setTintColor(TINT_COLORS[currentColorIndex])
     setAnimation(anim)
     setVisible(!visible)
+
+    currentColorIndex = currentColorIndex === TINT_COLORS.length - 1 ? 0 : currentColorIndex + 1
   }
 
   const appear = (anim) => {
+    setTintColor(TINT_COLORS[currentColorIndex])
     setAppearAnimation(anim)
     setVisible(!visible)
+
+    currentColorIndex = currentColorIndex === TINT_COLORS.length - 1 ? 0 : currentColorIndex + 1
+  }
+
+  const changeAlignment = (alignment) => {
+    setAlign(alignment)
+    setTintColor(TINT_COLORS[currentColorIndex])
+    setVisible(!visible)
+
+    currentColorIndex = currentColorIndex === TINT_COLORS.length - 1 ? 0 : currentColorIndex + 1
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: isDark ? '#aaa' : '#ddd' }]}>
       <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} backgroundColor={background} />
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ fontSize: 20, marginRight: 10, color: textColor }}>Dark mode</Text>
+        <Switch
+          onValueChange={() => setIsDark(!isDark)}
+          value={isDark}
+        />
+      </View>
       <Button
         title={'Fade'}
         onPress={() => show('fade')}
@@ -164,14 +221,24 @@ const App = (props) => {
         title={'Appear Slide'}
         onPress={() => appear('slide')}
       />
-      <WhatsNewKit
+      <Button
+        title={'Align center'}
+        onPress={() => changeAlignment('center')}
+      />
+      <NewFeature
         visible={visible}
         // appearAnimation={appearAnimation}
-        // appearAnimationDuration={data.appearAnimationDuration}
-        // contentAlignment={data.contentAlignment as 'left' | 'center'}
+        // contentAlignment={align}
         // animation={animation}
-        // background={data.background}
-        title={data.title}
+        background={data.background}
+        title={{
+          text: 'WHATS NEW',
+          color: '',
+          size: 1,
+          weight: '500',
+          margin: {},
+          padding: {}
+        }}
         items={data.items}
         detailButton={{
           ...data.detailButton,
@@ -186,14 +253,13 @@ const App = (props) => {
   )
 }
 
-export default App
+export default Home
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,

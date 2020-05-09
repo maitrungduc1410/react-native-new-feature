@@ -7,6 +7,7 @@ import CompletionButton from './CompletionButton'
 import constants from './constants'
 import PropTypes from 'prop-types'
 import { ITextView, IButton, ICompletionButtonView, IItemView } from './types'
+import { textPropTypes, layoutPropTypes, itemViewPropTypes } from './propTypes'
 
 interface IProps {
   visible: boolean,
@@ -82,29 +83,29 @@ export default WhatsNew
 
 WhatsNew.propTypes = {
   visible: PropTypes.bool.isRequired,
+  title: PropTypes.shape({
+    ...textPropTypes,
+    ...layoutPropTypes,
+  }).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    ...itemViewPropTypes,
+  })).isRequired,
+  completionButton: PropTypes.shape({
+    ...textPropTypes,
+    ...layoutPropTypes,
+    background: PropTypes.string,
+    radius: PropTypes.number,
+    handler: PropTypes.func,
+  }).isRequired,
+  detailButton: PropTypes.shape({
+    ...textPropTypes,
+    ...layoutPropTypes,
+    handler: PropTypes.func,
+  }),
   contentAlignment: PropTypes.oneOf(['left', 'center']),
   background: PropTypes.string,
-  animation: PropTypes.oneOf(['none', 'fade', 'slide-up', 'slide-down', 'slide-right', 'slide-left']),
-  appearAnimation: PropTypes.oneOf(['none', 'fade', 'slide']),
-  title: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    size: PropTypes.number,
-  }),
-  items: PropTypes.array.isRequired,
-  detailButton: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    size: PropTypes.number,
-    handler: PropTypes.func,
-  }),
-  completionButton: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    size: PropTypes.number,
-    background: PropTypes.string,
-    handler: PropTypes.func,
-  }),
+  animation: PropTypes.oneOf(constants.ANIMATIONS),
+  appearAnimation: PropTypes.oneOf(constants.APPEAR_ANIMATIONS),
 }
 
 WhatsNew.defaultProps = {
